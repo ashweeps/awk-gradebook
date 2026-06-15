@@ -107,3 +107,29 @@ Jackson        78.64%     C
 Sam            72.90%     C
 
 #This calculates the final weighted percentage for each student. The `BEGIN` block sets the comma as the field separator and prints the table header. For every line after the header, the script takes the student name from `$1`, the score from `$4`, and the maximum score from `$5`. The array `score_total` stores the total points earned by each student. The array `max_total` stores the total possible points for the same student. This is important because the assignments have different maximum values. In the `END` block, the script divides the total score by the total maximum score and multiplies by 100. Then the `if`, `else if`, and `else` conditions assign the correct letter grade. The `printf` command prints the name, percentage with two decimal places, and final letter grade in aligned columns.
+
+----Task 7
+
+#Script file: run.sh
+
+#Command:
+./run.sh Lab03-data.csv
+
+#Result:
+Student       Percent Grade
+Andrew         73.69%     C
+Ava            81.43%     B
+Chelsey        62.65%     D
+Diana          62.08%     D
+Eliza          84.16%     B
+Jackson        78.64%     C
+Kenji          86.45%     B
+Lucia          89.53%     B
+Maria          79.57%     C
+Noah           63.08%     D
+Priya          71.04%     C
+Sam            72.90%     C
+Shane          93.12%     A
+Tomas          82.22%     B
+
+#This Bash script receives the CSV file name as the first argument with `$1`. The variable `file` stores that file name. The `if` block checks if the user forgot to write a file name. If no file is given, the script prints a usage message and stops. The command `mktemp` creates a temporary file to save the output from `student_grades.awk`. Then the script runs `awk -f student_grades.awk "$file"` and saves the result in the temporary file. The command `head -n 1` prints only the header line. The command `tail -n +2` prints all lines after the header, and `sort` orders those student rows alphabetically. At the end, `rm "$tmp_file"` deletes the temporary file because it is no longer needed.
